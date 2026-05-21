@@ -1,3 +1,4 @@
+from typing import Optional
 """
 AutoVuln - Automated Vulnerability Scanner
 Author: Nithilaa Karthikeyan
@@ -97,7 +98,7 @@ RESET = "\033[0m"
 BOLD  = "\033[1m"
 
 
-def scan_port(host: str, port: int, timeout: float = 1.0) -> dict | None:
+def scan_port(host: str, port: int, timeout: float = 1.0) -> Optional[dict]:
     """Attempt TCP connection to host:port. Returns result dict or None."""
     try:
         with socket.create_connection((host, port), timeout=timeout) as sock:
