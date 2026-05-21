@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoVuln Report — scanme.nmap.org</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #161b22, #1f2937); padding: 40px; border-bottom: 1px solid #30363d; }
+  .header h1 { font-size: 28px; color: #58a6ff; font-weight: 700; letter-spacing: -0.5px; }
+  .header h1 span { color: #f0883e; }
+  .meta { margin-top: 12px; font-size: 13px; color: #8b949e; display: flex; gap: 24px; flex-wrap: wrap; }
+  .meta strong { color: #c9d1d9; }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; text-align: center; }
+  .stat-num { display: block; font-size: 36px; font-weight: 700; }
+  .stat-label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #8b949e; margin-top: 4px; }
+  .section-title { font-size: 16px; font-weight: 600; color: #58a6ff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #21262d; }
+  .port-chip { display: inline-block; background: #21262d; border: 1px solid #30363d; color: #79c0ff; border-radius: 4px; padding: 2px 10px; font-size: 13px; margin: 4px; font-family: monospace; }
+  .ports-section { margin-bottom: 32px; }
+  .finding { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 16px; transition: border-color 0.2s; }
+  .finding:hover { border-color: #58a6ff; }
+  .finding-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+  .cve-id { font-family: monospace; font-size: 15px; font-weight: 700; color: #f0883e; }
+  .badge { font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 12px; color: white; text-transform: uppercase; letter-spacing: 0.5px; }
+  .port-tag { font-size: 12px; color: #8b949e; background: #21262d; padding: 2px 8px; border-radius: 4px; font-family: monospace; }
+  .service { font-size: 13px; color: #8b949e; margin-bottom: 6px; }
+  .desc { font-size: 14px; color: #c9d1d9; }
+  .banner { margin-top: 10px; font-size: 12px; color: #8b949e; }
+  .banner code { background: #0d1117; padding: 2px 6px; border-radius: 3px; color: #79c0ff; }
+  .no-findings { text-align: center; padding: 60px; color: #8b949e; font-size: 16px; }
+  .footer { text-align: center; padding: 32px; font-size: 12px; color: #484f58; border-top: 1px solid #21262d; margin-top: 32px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div style="max-width:960px;margin:0 auto">
+    <h1>Auto<span>Vuln</span> Scan Report</h1>
+    <div class="meta">
+      <span><strong>Target:</strong> scanme.nmap.org</span>
+      <span><strong>IP:</strong> 45.33.32.156</span>
+      <span><strong>Scan Time:</strong> 2026-05-21 21:25:02</span>
+      <span><strong>Open Ports:</strong> 2</span>
+      <span><strong>Findings:</strong> 4</span>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="summary-grid"><div class='stat'><span class='stat-num' style='color:#e74c3c'>2</span><span class='stat-label'>CRITICAL</span></div><div class='stat'><span class='stat-num' style='color:#e67e22'>2</span><span class='stat-label'>HIGH</span></div></div>
+  <div class="ports-section">
+    <div class="section-title">Open Ports (2)</div>
+    <span class='port-chip'>:80</span><span class='port-chip'>:443</span>
+  </div>
+  <div class="section-title">Vulnerability Findings (4)</div>
+  
+        <div class="finding">
+            <div class="finding-header">
+                <span class="cve-id">CVE-2021-41773</span>
+                <span class="badge" style="background:#e74c3c">CRITICAL</span>
+                <span class="port-tag">Port 80</span>
+            </div>
+            <div class="service">HTTP (Apache 2.4.49)</div>
+            <div class="desc">Path traversal and remote code execution</div>
+            
+        </div>
+        <div class="finding">
+            <div class="finding-header">
+                <span class="cve-id">CVE-2022-22965</span>
+                <span class="badge" style="background:#e74c3c">CRITICAL</span>
+                <span class="port-tag">Port 80</span>
+            </div>
+            <div class="service">HTTP (Spring Framework)</div>
+            <div class="desc">Spring4Shell — RCE via data binding on JDK 9+</div>
+            
+        </div>
+        <div class="finding">
+            <div class="finding-header">
+                <span class="cve-id">CVE-2014-0160</span>
+                <span class="badge" style="background:#e67e22">HIGH</span>
+                <span class="port-tag">Port 443</span>
+            </div>
+            <div class="service">HTTPS (OpenSSL)</div>
+            <div class="desc">Heartbleed — memory disclosure via TLS heartbeat extension</div>
+            
+        </div>
+        <div class="finding">
+            <div class="finding-header">
+                <span class="cve-id">CVE-2022-0778</span>
+                <span class="badge" style="background:#e67e22">HIGH</span>
+                <span class="port-tag">Port 443</span>
+            </div>
+            <div class="service">HTTPS (OpenSSL < 1.0.2zd)</div>
+            <div class="desc">Infinite loop via crafted certificate, causing denial of service</div>
+            
+        </div>
+</div>
+<div class="footer">AutoVuln — Built by Nithilaa Karthikeyan &nbsp;|&nbsp; 2026-05-21 21:25:02</div>
+</body>
+</html>
