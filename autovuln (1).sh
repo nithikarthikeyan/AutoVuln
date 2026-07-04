@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# AutoVuln - Bash launcher with pre-flight checks
-# Usage: ./autovuln.sh <target> [--full] [--output <prefix>]
+
 
 set -euo pipefail
 
@@ -16,7 +15,6 @@ SCANNER="$SCRIPT_DIR/scanner.py"
 LOG_DIR="$SCRIPT_DIR/logs"
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 
-# ── Usage ──────────────────────────────────────────────────────────────────
 usage() {
   echo -e "${BOLD}Usage:${RESET} $0 <target> [options]"
   echo ""
@@ -34,7 +32,6 @@ usage() {
   exit 1
 }
 
-# ── Pre-flight checks ──────────────────────────────────────────────────────
 check_dependencies() {
   echo -e "${BLUE}[*]${RESET} Running pre-flight checks..."
 
@@ -53,7 +50,6 @@ check_dependencies() {
   echo -e "${GREEN}[✓]${RESET} Pre-flight checks passed\n"
 }
 
-# ── Validate target ────────────────────────────────────────────────────────
 validate_target() {
   local target="$1"
   if [[ -z "$target" ]]; then
@@ -67,7 +63,6 @@ validate_target() {
   fi
 }
 
-# ── Setup log directory ────────────────────────────────────────────────────
 setup_logs() {
   if [[ "$NO_LOG" == "false" ]]; then
     mkdir -p "$LOG_DIR"
@@ -76,7 +71,6 @@ setup_logs() {
   fi
 }
 
-# ── Main ───────────────────────────────────────────────────────────────────
 main() {
   if [[ $# -eq 0 ]]; then usage; fi
 
@@ -102,7 +96,6 @@ main() {
     esac
   done
 
-  # Auto-generate output file if not set
   if [[ "$OUTPUT_SET" == "false" ]]; then
     mkdir -p "$SCRIPT_DIR/reports"
     AUTO_OUT="$SCRIPT_DIR/reports/${TARGET//\//_}_${TIMESTAMP}"
